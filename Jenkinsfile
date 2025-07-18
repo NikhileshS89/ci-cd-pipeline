@@ -17,14 +17,15 @@ pipeline {
         stage('Deploy to S3') {
             steps {
                 withAWS(credentials: 'aws-jenkins-creds', region: 'ap-southeast-2') {
-                    s3Upload(
-                        bucket: 'ci-cd-artifacts-nik',
-                        file: 'index.html',
-                        path: 'index.html'
+                    awsS3Upload(
+                        entries: [[
+                            bucket: 'ci-cd-artifacts-nik',
+                            file: 'index.html',
+                            path: 'index.html'
+                        ]]
                     )
                 }
             }
         }
     }
 }
-
