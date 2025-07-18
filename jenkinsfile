@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone') {
+            steps {
+                git branch: 'main', url: 'https://github.com/Nikhilesh2002/ci-cd-pipeline.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo 'Build stage - listing files'
+                sh 'ls -l'
+            }
+        }
+
+        stage('Upload to S3') {
+            steps {
+                withAWS(region: 'ap-southeast-2', credentials: 'aws-jenkins-creds') {
+                    s3Upload(bucket: 'ci-cd-artifacts-nik', path: '/', file: 'index.html')
+                }
+            }
+        }
+    }
+}
