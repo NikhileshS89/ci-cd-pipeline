@@ -8,9 +8,24 @@ pipeline {
             }
         }
 
+        stage('Setup Python') {
+            steps {
+                echo 'Installing Python if required'
+                // Make sure python is available, else install manually outside Jenkins
+                sh 'python --version || echo "Python not found"'
+            }
+        }
+
+        stage('Run app.py') {
+            steps {
+                echo 'Running app.py'
+                sh 'python app.py'
+            }
+        }
+
         stage('Build') {
             steps {
-                echo 'Building...'
+                echo 'Building project...'
             }
         }
 
@@ -27,3 +42,4 @@ pipeline {
         }
     }
 }
+
