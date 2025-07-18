@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Pull Code') {
             steps {
-                git 'https://github.com/NikhileshS89/ci-cd-pipeline.git'
+                git branch: 'main', url: 'https://github.com/NikhileshS89/ci-cd-pipeline.git'
             }
         }
 
