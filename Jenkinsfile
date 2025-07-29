@@ -11,14 +11,14 @@ pipeline {
         stage('Setup Python') {
             steps {
                 echo 'Checking Python version'
-                bat '"C:\\Users\\YOUR_USERNAME\\AppData\\Local\\Programs\\Python\\Python312\\python.exe" --version'
+                bat '"C:\Users\nikhi\AppData\Local\Programs\Python\Python38-32\python.exe" --version'
             }
         }
 
         stage('Run app.py') {
             steps {
                 echo 'Running app.py'
-                bat 'app.py'
+                bat '"C:\Users\nikhi\AppData\Local\Programs\Python\Python38-32\python.exe" app.py'
             }
         }
 
